@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.isikkadir.pokemonapp.R
 import com.isikkadir.pokemonapp.adapter.PokemonListAdapter
@@ -25,7 +26,8 @@ class MainPage @Inject constructor(
 
         subscribeToObservers()
         binding!!.recyclerView.adapter = adapter
-        binding!!.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding!!.recyclerView.layoutManager = GridLayoutManager(requireContext(),2)
+
 
     }
 

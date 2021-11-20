@@ -55,7 +55,9 @@ class PokemonListAdapter @Inject constructor(
         val pokemonImage = holder.itemView.findViewById<ImageView>(R.id.item_pokemon_image)
         val pokemon = pokemonList[position]
         holder.itemView.apply {
-            pokemonName.text = "Name: ${pokemon.pokemonName}"
+            pokemonName.text = "${pokemon.pokemonName}"
+            glide.load(pokemon.imageUrl)
+                .into(pokemonImage);
         }
     }
 
