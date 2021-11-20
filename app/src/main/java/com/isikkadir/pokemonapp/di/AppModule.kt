@@ -1,6 +1,8 @@
 package com.isikkadir.pokemonapp.di
 
 import com.isikkadir.pokemonapp.api.PokemonApi
+import com.isikkadir.pokemonapp.repository.MainPageRepository
+import com.isikkadir.pokemonapp.repository.MainRepositoryInterface
 import com.isikkadir.pokemonapp.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -23,5 +25,10 @@ object AppModule {
             .build()
             .create(PokemonApi::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun injectMainPageRepository(api: PokemonApi) =
+        MainPageRepository(api) as MainRepositoryInterface
 
 }
