@@ -1,8 +1,10 @@
 package com.isikkadir.pokemonapp.adapter
 
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -47,6 +49,10 @@ class PokemonListAdapter @Inject constructor(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_item, parent, false)
+/*//        view.layoutParams =
+        var params = GridLayout.LayoutParams()
+        params.setGravity(Gravity.CENTER)
+        view.layoutParams = params*/
         return PokemonViewHolder(view)
     }
 
