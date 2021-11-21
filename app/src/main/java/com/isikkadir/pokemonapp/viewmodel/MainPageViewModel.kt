@@ -20,7 +20,7 @@ class MainPageViewModel @Inject constructor(
 
     private var curPage = 0
 
-    private var pokemonList = MutableLiveData<List<PokedexListEntry>>()
+    private var pokemonList = MutableLiveData<List<PokedexListEntry>>(listOf())
     val pokemonListPublic: LiveData<List<PokedexListEntry>> get() = pokemonList
 
     private var isLoading = MutableLiveData<Boolean>()
@@ -58,7 +58,7 @@ class MainPageViewModel @Inject constructor(
 
                     loadError.value = ""
                     isLoading.value = false
-                    pokemonList.postValue(pokedexEntries)
+                    pokemonList.value = pokemonList.value?.plus(pokedexEntries)
                 }
                 is Resource.Error -> {
                     loadError.value = result.message!!
