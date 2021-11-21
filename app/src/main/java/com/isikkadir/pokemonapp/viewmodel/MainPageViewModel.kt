@@ -58,7 +58,7 @@ class MainPageViewModel @Inject constructor(
 
                     loadError.value = ""
                     isLoading.value = false
-                    pokemonList.value = pokedexEntries
+                    pokemonList.postValue(pokedexEntries)
                 }
                 is Resource.Error -> {
                     loadError.value = result.message!!
@@ -69,3 +69,5 @@ class MainPageViewModel @Inject constructor(
 
     }
 }
+
+
