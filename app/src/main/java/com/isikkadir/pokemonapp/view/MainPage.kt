@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.isikkadir.pokemonapp.R
 import com.isikkadir.pokemonapp.adapter.PokemonListAdapter
 import com.isikkadir.pokemonapp.databinding.FragmentMainPageBinding
@@ -38,6 +39,18 @@ class MainPage @Inject constructor(
                 EqualSpacingItemDecoration.GRID
             )
         )
+        binding!!.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val layoutManagerr = recyclerView.layoutManager as LinearLayoutManager
+                val total = layoutManagerr!!.itemCount
+                val currentLastItem: Int = layoutManagerr.findLastVisibleItemPosition()
+                if (currentLastItem == total - 1) {
+                    viewModel.loadPokemonPaginated()
+                    subscribeToObservers()
+                }
+            }
+        })
         binding!!.searchText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 viewModel.searchPokemon(binding!!.searchText.text.toString())
