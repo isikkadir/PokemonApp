@@ -4,9 +4,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +13,7 @@ import com.isikkadir.pokemonapp.R
 import com.isikkadir.pokemonapp.model.PokedexListEntry
 import com.isikkadir.pokemonapp.model.pokemonlist.Result
 import javax.inject.Inject
+
 
 class PokemonListAdapter @Inject constructor(
     val glide: RequestManager
@@ -49,10 +48,6 @@ class PokemonListAdapter @Inject constructor(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_item, parent, false)
-/*//        view.layoutParams =
-        var params = GridLayout.LayoutParams()
-        params.setGravity(Gravity.CENTER)
-        view.layoutParams = params*/
         return PokemonViewHolder(view)
     }
 

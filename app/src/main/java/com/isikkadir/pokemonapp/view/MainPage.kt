@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.isikkadir.pokemonapp.R
 import com.isikkadir.pokemonapp.adapter.PokemonListAdapter
 import com.isikkadir.pokemonapp.databinding.FragmentMainPageBinding
+import com.isikkadir.pokemonapp.utils.EqualSpacingItemDecoration
 import com.isikkadir.pokemonapp.viewmodel.MainPageViewModel
 import javax.inject.Inject
 
@@ -31,6 +32,12 @@ class MainPage @Inject constructor(
         subscribeToObservers()
         binding!!.recyclerView.adapter = adapter
         binding!!.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding!!.recyclerView.addItemDecoration(
+            EqualSpacingItemDecoration(
+                50,
+                EqualSpacingItemDecoration.GRID
+            )
+        )
         binding!!.searchText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 viewModel.searchPokemon(binding!!.searchText.text.toString())
