@@ -46,23 +46,32 @@ class MainPage @Inject constructor(
                 val total = layoutManagerr!!.itemCount
                 val currentLastItem: Int = layoutManagerr.findLastVisibleItemPosition()
                 if (currentLastItem == total - 1) {
-                    viewModel.loadPokemonPaginated()
-                    subscribeToObservers()
+                    if (binding!!.searchText.text.isEmpty()) {
+                        viewModel.loadPokemonPaginated()
+                        subscribeToObservers()
+                    }
                 }
             }
         })
         binding!!.searchText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                viewModel.searchPokemon(binding!!.searchText.text.toString())
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                viewModel.searchPokemon(binding!!.searchText.text.toString())
+                Log.e("Yazı: ", "Yazı = ${binding!!.searchText.text}")
+                listenToSearchingPokemon(binding!!.searchText.text.toString())
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                viewModel.searchPokemon(binding!!.searchText.text.toString())
             }
+        })
+    }
+
+    private fun listenToSearchingPokemon(query: String) {
+        Log.e("Msg", "isSearching. Wait!!")
+        viewModel.searchPokemon(query)
+        viewModel.pokemonListPublic.observe(viewLifecycleOwner, { list ->
+            adapter.pokemonList = list
         })
     }
 

@@ -1,5 +1,6 @@
 package com.isikkadir.pokemonapp.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -35,7 +36,7 @@ class MainPageViewModel @Inject constructor(
 
     private var cachedPokemonList = listOf<PokedexListEntry>()
     private var isSearchStarting = true
-    var isSearching = MutableLiveData<Boolean>(false)
+    var isSearching = MutableLiveData(false)
 
     init {
         loadPokemonPaginated()
@@ -97,6 +98,7 @@ class MainPageViewModel @Inject constructor(
                 isSearchStarting = false
             }
             pokemonList.value = results!!
+            Log.e("Result", "Result Size ${results!!.size}")
             isSearching.value = true
         }
     }
