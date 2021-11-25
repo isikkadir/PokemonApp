@@ -1,6 +1,5 @@
 package com.isikkadir.pokemonapp.view
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher

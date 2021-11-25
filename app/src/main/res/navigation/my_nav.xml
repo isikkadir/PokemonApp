@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_mainPage_to_pokemonDetails"
             app:destination="@id/pokemonDetails" />
+        <argument
+            android:name="pokeNumber"
+            app:argType="integer"
+            android:defaultValue="1" />
     </fragment>
     <fragment
         android:id="@+id/pokemonDetails"
