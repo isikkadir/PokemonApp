@@ -29,6 +29,7 @@ class DetailsPageViewModel @Inject constructor(
     val loadErrorPublic: LiveData<String> get() = loadError
 
 
+
     fun loadPokemonDetails(number : Int) {
         isLoading.value = true
         viewModelScope.launch {
