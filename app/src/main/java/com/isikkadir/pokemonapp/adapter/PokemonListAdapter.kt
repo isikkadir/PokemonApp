@@ -1,17 +1,19 @@
 package com.isikkadir.pokemonapp.adapter
 
-import android.view.Gravity
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import com.isikkadir.pokemonapp.R
 import com.isikkadir.pokemonapp.model.PokedexListEntry
-import com.isikkadir.pokemonapp.model.pokemonlist.Result
+import com.isikkadir.pokemonapp.view.MainPageDirections
 import javax.inject.Inject
 
 
@@ -35,8 +37,6 @@ class PokemonListAdapter @Inject constructor(
         ): Boolean {
             return oldItem == newItem
         }
-
-
     }
 
     private val recyclerListDiffer = AsyncListDiffer(this, diffUtil)
@@ -60,10 +60,15 @@ class PokemonListAdapter @Inject constructor(
             glide.load(pokemon.imageUrl)
                 .into(pokemonImage);
         }
+        holder.itemView.setOnClickListener {
+            Log.e("Tıklandı", "Tıklandı $pokemon")
+            val navigation = MainPageDirections.actionMainPageToPokemonDetails(pokemon.number)
+            it.findNavController().navigate(navigation)
+        }
+
     }
 
     override fun getItemCount(): Int {
         return pokemonList.count()
     }
-
 }

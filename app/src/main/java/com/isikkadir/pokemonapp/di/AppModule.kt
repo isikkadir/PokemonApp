@@ -5,6 +5,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.isikkadir.pokemonapp.R
 import com.isikkadir.pokemonapp.api.PokemonApi
+import com.isikkadir.pokemonapp.repository.DetailsPageRepository
+import com.isikkadir.pokemonapp.repository.DetailsRepositoryInterface
 import com.isikkadir.pokemonapp.repository.MainPageRepository
 import com.isikkadir.pokemonapp.repository.MainRepositoryInterface
 import com.isikkadir.pokemonapp.utils.Constants.BASE_URL
@@ -35,6 +37,11 @@ object AppModule {
     @Provides
     fun injectMainPageRepository(api: PokemonApi) =
         MainPageRepository(api) as MainRepositoryInterface
+
+    @Singleton
+    @Provides
+    fun injectDetailsPageRepository(api: PokemonApi) =
+        DetailsPageRepository(api) as DetailsRepositoryInterface
 
     @Singleton
     @Provides

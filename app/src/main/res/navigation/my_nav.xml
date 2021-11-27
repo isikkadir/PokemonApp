@@ -9,22 +9,22 @@
         android:id="@+id/mainPage"
         android:name="com.isikkadir.pokemonapp.view.MainPage"
         android:label="fragment_main_page"
-        tools:layout="@layout/fragment_main_page" >
+        tools:layout="@layout/fragment_main_page">
         <action
             android:id="@+id/action_mainPage_to_pokemonDetails"
             app:destination="@id/pokemonDetails" />
-        <argument
-            android:name="pokeNumber"
-            app:argType="integer"
-            android:defaultValue="1" />
     </fragment>
     <fragment
         android:id="@+id/pokemonDetails"
         android:name="com.isikkadir.pokemonapp.view.PokemonDetails"
         android:label="fragment_pokemon_details"
-        tools:layout="@layout/fragment_pokemon_details" >
+        tools:layout="@layout/fragment_pokemon_details">
         <action
             android:id="@+id/action_pokemonDetails_to_mainPage"
             app:destination="@id/mainPage" />
+        <argument
+            android:name="pokeNumber"
+            android:defaultValue="1"
+            app:argType="integer" />
     </fragment>
 </navigation>

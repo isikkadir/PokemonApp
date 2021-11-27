@@ -10,7 +10,6 @@ import com.isikkadir.pokemonapp.repository.MainRepositoryInterface
 import com.isikkadir.pokemonapp.utils.Constants.PAGE_SIZE
 import com.isikkadir.pokemonapp.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
@@ -33,6 +32,7 @@ class MainPageViewModel @Inject constructor(
 
     private var loadError = MutableLiveData<String>()
     val loadErrorPublic: LiveData<String> get() = loadError
+
 
     private var cachedPokemonList = listOf<PokedexListEntry>()
     private var isSearchStarting = true

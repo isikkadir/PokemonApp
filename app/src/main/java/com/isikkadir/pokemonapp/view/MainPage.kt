@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -65,10 +64,6 @@ class MainPage @Inject constructor(
             override fun afterTextChanged(p0: Editable?) {
             }
         })
-        binding!!.logo.setOnClickListener {
-            val navigation = MainPageDirections!!.actionMainPageToPokemonDetails()
-            Navigation.findNavController(it).navigate(navigation)
-        }
     }
 
     private fun listenToSearchingPokemon(query: String) {
