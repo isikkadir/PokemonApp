@@ -21,6 +21,10 @@ class MainPageViewModel @Inject constructor(
 
     private var curPage = 0
 
+    fun setCurPage(deger: Int) {
+        curPage = deger
+    }
+
     private var pokemonList = MutableLiveData<List<PokedexListEntry>>(listOf())
     val pokemonListPublic: LiveData<List<PokedexListEntry>> get() = pokemonList
 

@@ -91,6 +91,11 @@ class MainPage @Inject constructor(
         })
     }
 
+    override fun onPause() {
+        super.onPause()
+        viewModel.setCurPage(0)
+    }
+
     override fun onDestroy() {
         binding = null
         super.onDestroy()

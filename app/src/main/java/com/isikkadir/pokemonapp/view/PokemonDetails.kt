@@ -3,8 +3,10 @@ package com.isikkadir.pokemonapp.view
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.RequestManager
 import com.isikkadir.pokemonapp.R
@@ -28,6 +30,7 @@ class PokemonDetails @Inject constructor(
         val args: PokemonDetailsArgs by navArgs()
         getPokemonDetails(args.pokeNumber)
         subscribeToObservers(args.pokeNumber)
+        requireActivity().onBackPressedDispatcher.addCallback(callBack)
     }
 
     private fun subscribeToObservers(pokeNumber: Int) {
@@ -64,6 +67,13 @@ class PokemonDetails @Inject constructor(
             glide.load(url).into(binding!!.detailsImageView);
         })
     }
+
+    val callBack = object : OnBackPressedCallback(true){
+        override fun handleOnBackPressed() {
+            findNavController().popBackStack()
+        }
+    }
+
 
 
     private fun getPokemonDetails(pokeNumber: Int) {
